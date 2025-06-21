@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nitrex - BIO</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Przełącznik motywu -->
+  <div class="theme-toggle">
+    <button id="toggle-theme" title="Zmień motyw">🌓</button>
+  </div>
+
+  <!-- Tło cząsteczkowe -->
+  <div id="particles-js"></div>
+
+  <!-- Muzyka w tle -->
+  <audio id="background-music" autoplay loop>
+    <source src="muzyka.mp3" type="audio/mp3" />
+  </audio>
+
+  <div class="container">
+    <div class="profile">
+      <img src="https://i.imgur.com/gMjwjaw.png" alt="avatar" class="avatar"/>
+      <h1 class="title gradient-text animate-fade">Nitrex</h1>
+      <p class="description">"Dostałem po ryju od losu tyle razy, że już nie licze..."</p>
+      <div class="socials">
+        <a href="https://youtube.com" target="_blank" aria-label="YouTube">
+          <svg fill="#FFFFFF" height="28" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M19.615 3.184a3.001 3.001 0 00-2.12-2.12C15.973.5 12 .5 12 .5s-3.973 0-5.495.564a3.001 3.001 0 00-2.12 2.12C3.82 4.706 3.82 8 3.82 8s0 3.294.565 4.816a3.001 3.001 0 002.12 2.12C8.027 16 12 16 12 16s3.973 0 5.495-.564a3.001 3.001 0 002.12-2.12C20.18 11.294 20.18 8 20.18 8s0-3.294-.565-4.816zM10 11.5V6.5L15 9l-5 2.5z"/>
+          </svg>
+        </a>
+        <a href="https://twitch.tv" target="_blank" aria-label="Twitch">
+          <svg fill="#FFFFFF" height="28" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4.285 0L1.5 3.071V18h5.143V24l5.142-6h3.43L22.5 13.071V0H4.285zm15.215 11.143l-2.572 2.572h-3.429l-3.43 3.429v-3.429H6.857V1.714h12.643v9.429zM14.786 5.143v5.143h-1.714V5.143h1.714zm-4.286 0v5.143H8.786V5.143h1.714z"/>
+          </svg>
+        </a>
+        <a href="https://steamcommunity.com" target="_blank" aria-label="Steam">
+          <svg fill="#FFFFFF" height="28" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 0C5.373 0 0 5.373 0 12a11.98 11.98 0 001.392 5.607l3.928 1.646a2.724 2.724 0 002.465 1.747l2.858 3a12.03 12.03 0 001.357.077c6.627 0 12-5.373 12-12S18.627 0 12 0zm6.857 7.714a3.429 3.429 0 11-6.857 0 3.429 3.429 0 016.857 0z"/>
+          </svg>
+        </a>
+        <a href="https://tiktok.com" target="_blank" aria-label="TikTok">
+          <svg fill="#FFFFFF" height="28" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12.768 0H9.846v17.005a3.068 3.068 0 11-3.068-3.067c.306 0 .6.05.87.14V10.85a6.135 6.135 0 00-.87-.064A6.135 6.135 0 006.134 23.07a6.135 6.135 0 006.134-6.134V8.507a6.135 6.135 0 006.134 6.134v-2.922a3.068 3.068 0 01-3.068-3.067V0z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="card discord-card">
+      <div id="discord-status">Ładowanie statusu Discord...</div>
+      <a href="https://discord.gg/gta5majestic" target="_blank" class="btn pulse">Serwer na którym gram</a>
+    </div>
+
+    <div class="card youtube-card">
+      <h3>MajesticRP - Summer Pass</h3>
+      <iframe width="100%" height="215" src="https://www.youtube.com/embed/4MJ139p_81w?si=3ZSekP4wjhZC3ltf" 
+        frameborder="0" allowfullscreen></iframe>
+    </div>
+
+    <div class="card">
+      <h3>Linki</h3>
+      <ul>
+        <li><a href="https://dsc.gg/mjeu">MJEU</a></li>
+      </ul>
+    </div>
+
+    <div class="footer">Odwiedzin: <span id="visitorCount">0</span></div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script>
+    // Motyw
+    document.getElementById('toggle-theme').onclick = () => {
+      document.body.classList.toggle('light');
+      localStorage.setItem('theme', document.body.classList.contains('light') ? 'light' : 'dark');
+    };
+    if (localStorage.getItem('theme') === 'light') {
+      document.body.classList.add('light');
+    }
+
+    // Particles.js
+    particlesJS('particles-js', {
+      particles: {
+        number: { value: 60 },
+        color: { value: "#202020" },
+        shape: { type: "circle" },
+        opacity: { value: 0.15, random: true },
+        size: { value: 3, random: true },
+        move: { enable: true, speed: 0.5 }
+      },
+      interactivity: {
+        events: { onhover: { enable: false }, onclick: { enable: false } }
+      },
+      retina_detect: true
+    });
+
+    // Licznik odwiedzin
+    let count = localStorage.getItem('visits') || 0;
+    count++;
+    localStorage.setItem('visits', count);
+    document.getElementById('visitorCount').innerText = count;
+
+    // Discord status
+    fetch('https://api.lanyard.rest/v1/users/1349305093211684887')
+      .then(res => res.json())
+      .then(data => {
+        const status = data.data.discord_status;
+        const activity = data.data.activities?.[0]?.name || "brak aktywności";
+        document.getElementById("discord-status").innerText = `Status: ${status}, Gra: ${activity}`;
+      })
+      .catch(() => {
+        document.getElementById("discord-status").innerText = "Brak danych Discorda";
+      });
+
+    // Muzyka i efekt kliknięcia
+    const music = document.getElementById('background-music');
+    let musicStarted = false;
+
+    document.addEventListener('click', (e) => {
+      // Włącz muzykę tylko przy pierwszym kliknięciu (jeśli zatrzymana)
+      if (!musicStarted) {
+        music.play().catch(() => {
+          // Jeśli odtwarzanie nie powiedzie się (np. brak interakcji), nic nie rób
+        });
+        musicStarted = true;
+      }
+
+      // Tworzymy kółko kliknięcia
+      const circle = document.createElement('div');
+      circle.style.position = 'absolute';
+      circle.style.left = `${e.pageX - 10}px`;
+      circle.style.top = `${e.pageY - 10}px`;
+      circle.style.width = '20px';
+      circle.style.height = '20px';
+      circle.style.background = 'rgba(255, 255, 255, 0.5)';
+      circle.style.borderRadius = '50%';
+      circle.style.pointerEvents = 'none';
+      circle.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+      circle.style.opacity = '1';
+      circle.style.transform = 'scale(1)';
+      circle.style.zIndex = 9999;
+
+      document.body.appendChild(circle);
+
+      // Animacja zanikania i powiększania
+      requestAnimationFrame(() => {
+        circle.style.opacity = '0';
+        circle.style.transform = 'scale(2)';
+      });
+
+      // Usuwamy element po animacji
+      setTimeout(() => {
+        circle.remove();
+      }, 600);
+    });
+  </script>
+</body>
+</html>
